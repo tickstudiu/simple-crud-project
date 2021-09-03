@@ -1,5 +1,6 @@
 import {
     getProjectHandler,
+    getProjectsHandler,
     createPostHandler,
 } from './controller/project.controller'
 import {
@@ -12,6 +13,7 @@ export default function (app: Express) {
     app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200))
 
     // Get all projects
+    app.get('/api/projects', getProjectsHandler)
 
     // Get one project
     app.get('/api/projects/:projectId', getProjectHandler)
@@ -20,8 +22,6 @@ export default function (app: Express) {
     app.post('/api/projects', [validateRequest(createProjectSchema)], createPostHandler)
 
     // Update project
-
-    // Toggle complete project
 
     // Delete project
 }
