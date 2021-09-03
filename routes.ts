@@ -2,9 +2,11 @@ import {
     getProjectHandler,
     getProjectsHandler,
     createPostHandler,
+    deleteProjectHandler
 } from './controller/project.controller'
 import {
     createProjectSchema,
+    deleteProjectSchema
 } from "./schema/project.schema"
 import { Express, Request, Response } from 'express'
 import { validateRequest } from './middleware'
@@ -24,4 +26,5 @@ export default function (app: Express) {
     // Update project
 
     // Delete project
+    app.delete('/api/projects/:projectId', [validateRequest(deleteProjectSchema)], deleteProjectHandler)
 }

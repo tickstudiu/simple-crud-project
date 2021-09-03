@@ -22,3 +22,7 @@ export function findProject(
 ) {
     return Project.findOne(query, {}, options);
 }
+
+export function deleteProject(query: FilterQuery<ProjectDocument>) {
+    return Project.deleteOne(query);
+}

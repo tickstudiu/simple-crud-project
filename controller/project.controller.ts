@@ -3,7 +3,8 @@ import { get } from 'lodash'
 import {
     findProject,
     createProject,
-    findsProject
+    findsProject,
+    deleteProject
 } from '../service/project.service'
 
 export async function createPostHandler(req: Request, res: Response) {
@@ -33,4 +34,17 @@ export async function getProjectsHandler(req: Request, res: Response) {
     }
 
     return res.send(projects)
+}
+
+export async function deleteProjectHandler(req: Request, res: Response) {
+    const projectId = get(req, 'params.projectId')
+    const project = await findProject({ projectId })
+
+    if (!project) {
+        return res.sendStatus(404)
+    }
+
+    await deleteProject({ projectId })
+
+    return res.sendStatus(200)
 }
