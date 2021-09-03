@@ -23,6 +23,14 @@ export function findProject(
     return Project.findOne(query, {}, options);
 }
 
+export function findProjectAndUpdate(
+    query: FilterQuery<ProjectDocument>,
+    update: UpdateQuery<ProjectDocument>,
+    options: QueryOptions
+) {
+    return Project.findOneAndUpdate(query, update, options);
+}
+
 export function deleteProject(query: FilterQuery<ProjectDocument>) {
     return Project.deleteOne(query);
 }

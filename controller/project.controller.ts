@@ -4,6 +4,7 @@ import {
     findProject,
     createProject,
     findsProject,
+    findProjectAndUpdate,
     deleteProject
 } from '../service/project.service'
 
@@ -13,6 +14,20 @@ export async function createPostHandler(req: Request, res: Response) {
     const project = await createProject(body)
 
     return res.send(project)
+}
+
+export async function updateProjectHandler(req: Request, res: Response) {
+    const projectId = get(req, 'params.projectId')
+    const project = await findProject({ projectId })
+    const update = req.body
+
+    if (!project) {
+        return res.sendStatus(404)
+    }
+
+    const updatedProject = await findProjectAndUpdate({ projectId }, update, { new: true })
+
+    return res.send(updatedProject)
 }
 
 export async function getProjectHandler(req: Request, res: Response) {
