@@ -1,5 +1,5 @@
 
-import { object, string, boolean } from "yup";
+import { object, string, boolean } from "yup"
 
 const payload = {
     body: object({
