@@ -6,6 +6,10 @@ import {
 } from "mongoose";
 import Project, { ProjectDocument } from "../model/project.model"
 
+export function createProject(input: DocumentDefinition<ProjectDocument>) {
+    return Project.create(input)
+}
+
 export function findProject(
     query: FilterQuery<ProjectDocument>,
     options: QueryOptions = { lean: true }

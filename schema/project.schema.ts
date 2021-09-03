@@ -6,13 +6,13 @@ const payload = {
         title: string().required("Title is required"),
         details: string()
             .required("Details is required"),
-        complete: boolean()
+        complete: boolean().default(true)
     }),
 };
 
 const params = {
     params: object({
-        projectId: string().required("postId is required"),
+        projectId: string().required("projectId is required"),
     }),
 };
 
