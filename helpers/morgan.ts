@@ -1,4 +1,4 @@
-import { Express, Request, Response } from "express";
+import { Request, Response } from "express";
 import morgan from 'morgan'
 import log from './logger'
 import config from 'config'
